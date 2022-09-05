@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div className="text-2xl font-sans">
+    <div className="text-2xl font-grotesk">
       Hello World!
     </div>
   );
