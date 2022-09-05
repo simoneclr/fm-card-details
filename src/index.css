@@ -12,4 +12,13 @@
 		@apply aspect-[1.8];
 		@apply rounded-lg;
 	}
+
+	.CardPreviewBack {
+		@apply bg-[url("./assets/images/bg-card-back.png")];
+		@apply bg-no-repeat;
+		@apply bg-cover;
+		@apply bg-center;
+		@apply aspect-[1.8];
+		@apply rounded-lg;
+	}
 }
