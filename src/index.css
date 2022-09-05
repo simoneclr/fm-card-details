@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	
+	.CardPreviewFront {
+		@apply bg-[url("./assets/images/bg-card-front.png")];
+		@apply bg-no-repeat;
+		@apply bg-cover;
+		@apply bg-center;
+		@apply aspect-[1.8];
+		@apply rounded-lg;
+	}
+}
