@@ -1,7 +1,13 @@
-import {ReactComponent as CardLogo} from "../../assets/images/card-logo.svg"
+import { ReactComponent as CardLogo } from "../../assets/images/card-logo.svg"
+
+interface CardPreviewFrontProps {
+	number?: string;
+	name?: string;
+	expireDate?: string;
+}
 
 // Displays a preview of the front of the credit card with the data inserted by the user
-function CardPreviewFront({number, name, expireDate}) {
+function CardPreviewFront({number, name, expireDate}: CardPreviewFrontProps) {
 
 	const DEFAULT_NUMBER = "0000 0000 0000 0000"
 	const DEFAULT_NAME = "Felicia Leire"

@@ -1,5 +1,9 @@
+interface CardPreviewBackProps {
+	number?: string;
+}
+
 // Displays a preview of the back of the credit card with the data inserted by the user
-function CardPreviewBack({number}) {
+function CardPreviewBack({number}: CardPreviewBackProps) {
 	
 	let renderedNumber = "000"
 
