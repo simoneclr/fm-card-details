@@ -1,17 +1,13 @@
 import { ReactComponent as CardLogo } from "../../assets/images/card-logo.svg"
 
 interface CardPreviewFrontProps {
-	number?: string;
-	name?: string;
-	expireDate?: string;
+	number: string;
+	name: string;
+	expireDate: string;
 }
 
 // Displays a preview of the front of the credit card with the data inserted by the user
 function CardPreviewFront({number, name, expireDate}: CardPreviewFrontProps) {
-
-	const DEFAULT_NUMBER = "0000 0000 0000 0000"
-	const DEFAULT_NAME = "Felicia Leire"
-	const DEFAULT_DATE = "00/00"
 
 	return (
 		<div className="CardPreviewFront text-white w-[275px] p-4 flex flex-col justify-between">
@@ -22,15 +18,15 @@ function CardPreviewFront({number, name, expireDate}: CardPreviewFrontProps) {
 
 			<div className="w-full flex flex-wrap gap-4 justify-between items-end">
 				<div className="uppercase w-full">
-					{number || DEFAULT_NUMBER}
+					{number}
 				</div>
 
 				<div className="uppercase text-lightGrayishViolet text-xs">
-					{name || DEFAULT_NAME}
+					{name}
 				</div>
 
 				<div className="text-lightGrayishViolet text-xs">
-					{expireDate || DEFAULT_DATE}
+					{expireDate}
 				</div>
 			</div>
 		</div>
