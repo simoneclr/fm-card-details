@@ -6,6 +6,19 @@ import InputWithErrorMessage from "./InputWithErrorMessage"
 function CardDetailsForm() {
 
 	const [name, setName] = useState<string>("")
+	const [nameError, setNameError] = useState<boolean>(false)
+
+	const [number, setNumber] = useState<string>("")
+	const [numberError, setNumberError] = useState<boolean>(false)
+
+	const [expireMonth, setExpireMonth] = useState<string>("")
+	const [expireMonthError, setExpireMonthError] = useState<boolean>(false)
+
+	const [expireYear, setExpireYear] = useState<string>("")
+	const [expireYearError, setExpireYearError] = useState<boolean>(false)
+
+	const [cvc, setCvc] = useState<string>("")
+	const [cvcError, setCvcError] = useState<boolean>(false)
 
 	return (
 		<form className="flex flex-wrap justify-between gap-4 w-80">
@@ -22,7 +35,7 @@ function CardDetailsForm() {
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
 					placeholder="e.g. Jane Appleseed"
 					value={name}
-					error={false}
+					error={nameError}
 					errorMessage="Invalid value"
 				/>
 			</label>
@@ -36,10 +49,10 @@ function CardDetailsForm() {
 					className="grow"
 					name="number"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value)}
 					placeholder="e.g. 1234 4567 9123 0000"
-					value={name}
-					error={false}
+					value={number}
+					error={numberError}
 					errorMessage="Invalid value"
 				/>
 			</label>
@@ -53,10 +66,10 @@ function CardDetailsForm() {
 					className="grow"
 					name="expireMonth"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setExpireMonth(e.target.value)}
 					placeholder="MM"
-					value={name}
-					error={false}
+					value={expireMonth}
+					error={expireMonthError}
 					errorMessage="Invalid value"
 				/>
 
@@ -64,10 +77,10 @@ function CardDetailsForm() {
 					className="grow"
 					name="expireYear"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setExpireYear(e.target.value)}
 					placeholder="YY"
-					value={name}
-					error={false}
+					value={expireYear}
+					error={expireYearError}
 					errorMessage="Invalid value"
 				/>
 			</label>
@@ -81,10 +94,10 @@ function CardDetailsForm() {
 					className="w-full"
 					name="name"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCvc(e.target.value)}
 					placeholder="e.g. 123"
-					value={name}
-					error={false}
+					value={cvc}
+					error={cvcError}
 					errorMessage="Invalid value"
 				/>
 			</label>
