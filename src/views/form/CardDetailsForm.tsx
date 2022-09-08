@@ -1,5 +1,7 @@
 import { useState, SyntheticEvent } from "react"
 
+import { validateCvc, validateMonth, validateName, validateNumber, validateYear } from "./validation"
+
 import CtaButton from "../../components/CtaButton"
 import InputWithErrorMessage from "./InputWithErrorMessage"
 
@@ -34,14 +36,48 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 	const handleSubmit = (e: SyntheticEvent) => {
 		e.preventDefault()
 
-		updateValues(name, number, expireMonth, expireYear, cvc)
+		let reject = false
+		
+		if (validateName(name).error) {
+			reject = true
+			setNameError(true)
+			console.log("Name: " + validateName(number).message)
+		}
 
-		// Clear form
-		setName("")
-		setNumber("")
-		setExpireMonth("")
-		setExpireYear("")
-		setCvc("")
+		if (validateNumber(number).error) {
+			reject = true
+			setNumberError(true)
+			console.log("Number: " + validateNumber(number).message)
+		}
+
+		if (validateMonth(expireMonth).error) {
+			reject = true
+			setExpireMonthError(true)
+			console.log("Month: " + validateMonth(expireMonth).message)
+		}
+
+		if (validateYear(expireYear).error) {
+			reject = true
+			setExpireYearError(true)
+			console.log("Year: " + validateYear(expireYear).message)
+		}
+
+		if (validateCvc(cvc).error) {
+			reject = true
+			setCvcError(true)
+			console.log("Cvc: " + validateCvc(cvc).message)
+		}
+
+		if (!reject) {
+			updateValues(name, number, expireMonth, expireYear, cvc)
+
+			// Clear form
+			setName("")
+			setNumber("")
+			setExpireMonth("")
+			setExpireYear("")
+			setCvc("")
+		}
 	} 
 
 	return (
