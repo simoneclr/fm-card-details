@@ -1,10 +1,20 @@
-import { useState } from "react"
+import { useState, SyntheticEvent } from "react"
 
 import CtaButton from "../../components/CtaButton"
 import InputWithErrorMessage from "./InputWithErrorMessage"
 
+interface CardDetailsFormProps {
+	updateValues: (
+		name: string,
+    number: string,
+    expireMonth: string,
+    expireYear: string,
+    cvc: string
+	) => void
+}
+
 // Displays a form the user can use to input their credit card's details
-function CardDetailsForm() {
+function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 
 	const [name, setName] = useState<string>("")
 	const [nameError, setNameError] = useState<boolean>(false)
@@ -21,8 +31,21 @@ function CardDetailsForm() {
 	const [cvc, setCvc] = useState<string>("")
 	const [cvcError, setCvcError] = useState<boolean>(false)
 
+	const handleSubmit = (e: SyntheticEvent) => {
+		e.preventDefault()
+
+		updateValues(name, number, expireMonth, expireYear, cvc)
+
+		// Clear form
+		setName("")
+		setNumber("")
+		setExpireMonth("")
+		setExpireYear("")
+		setCvc("")
+	} 
+
 	return (
-		<form onSubmit={e => {e.preventDefault()}} className="flex flex-wrap justify-between gap-4 w-80">
+		<form onSubmit={handleSubmit} className="flex flex-wrap justify-between gap-4 w-80">
 
 			<label className="w-full">
 				<div className="uppercase text-sm mb-2">
