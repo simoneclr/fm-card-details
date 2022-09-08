@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+import CtaButton from "../../components/CtaButton"
 import InputWithErrorMessage from "./InputWithErrorMessage"
 
 // Displays a form the user can use to input their credit card's details
@@ -21,7 +22,7 @@ function CardDetailsForm() {
 	const [cvcError, setCvcError] = useState<boolean>(false)
 
 	return (
-		<form className="flex flex-wrap justify-between gap-4 w-80">
+		<form onSubmit={e => {e.preventDefault()}} className="flex flex-wrap justify-between gap-4 w-80">
 
 			<label className="w-full">
 				<div className="uppercase text-sm mb-2">
@@ -101,6 +102,10 @@ function CardDetailsForm() {
 					errorMessage="Invalid value"
 				/>
 			</label>
+			
+			<CtaButton className="w-full mt-4" onClick={() => {}}>
+				Confirm
+			</CtaButton>
 		</form>
 	)
 }
