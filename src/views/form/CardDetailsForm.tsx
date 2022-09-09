@@ -38,6 +38,36 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 	const [cvcError, setCvcError] = useState<boolean>(false)
 	const [cvcErrorMessage, setCvcErrorMessage] = useState<string | undefined>()
 
+	const handleNameChange = (input: string) => {
+		setName(input)
+		setNameError(false)
+		setNameErrorMessage(undefined)
+	}
+
+	const handleNumberChange = (input: string) => {
+		setNumber(input)
+		setNumberError(false)
+		setNumberErrorMessage(undefined)
+	}
+
+	const handleExpireMonthChange = (input: string) => {
+		setExpireMonth(input)
+		setExpireMonthError(false)
+		setExpireMonthErrorMessage(undefined)
+	}
+
+	const handleExpireYearChange = (input: string) => {
+		setExpireYear(input)
+		setExpireYearError(false)
+		setExpireYearErrorMessage(undefined)
+	}
+
+	const handleCvcChange = (input: string) => {
+		setCvc(input)
+		setCvcError(false)
+		setCvcErrorMessage(undefined)
+	}
+
 	const handleSubmit = (e: SyntheticEvent) => {
 		e.preventDefault()
 
@@ -143,7 +173,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					className="grow"
 					name="name"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+					handleChange={handleNameChange}
 					placeholder="e.g. Jane Appleseed"
 					value={name}
 					error={nameError}
@@ -160,7 +190,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					className="grow"
 					name="number"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value)}
+					handleChange={handleNumberChange}
 					placeholder="e.g. 1234 4567 9123 0000"
 					value={number}
 					error={numberError}
@@ -177,7 +207,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					className="grow"
 					name="expireMonth"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setExpireMonth(e.target.value)}
+					handleChange={handleExpireMonthChange}
 					placeholder="MM"
 					value={expireMonth}
 					error={expireMonthError}
@@ -188,7 +218,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					className="grow"
 					name="expireYear"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setExpireYear(e.target.value)}
+					handleChange={handleExpireYearChange}
 					placeholder="YY"
 					value={expireYear}
 					error={expireYearError}
@@ -205,7 +235,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					className="w-full"
 					name="name"
 					type="text"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCvc(e.target.value)}
+					handleChange={handleCvcChange}
 					placeholder="e.g. 123"
 					value={cvc}
 					error={cvcError}
