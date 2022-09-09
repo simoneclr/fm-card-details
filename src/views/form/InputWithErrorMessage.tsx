@@ -21,7 +21,8 @@ function InputWithErrorMessage({
 			<input type={type} name={name} id={name} value={value} placeholder={placeholder} 
 				onChange={onChange} size={1}
 				className={"text-base placeholder:text-darkGrayishViolet p-2 rounded-lg outline outline-1 " +
-					"focus:outline-2 focus:outline-veryDarkViolet " +	(error ? "outline-errorRed" : "outline-darkGrayishViolet")
+					"focus:outline-2 focus:outline-veryDarkViolet " +	
+					(error ? "outline-errorRed" : "outline-darkGrayishViolet")
 				}
 			/>
 

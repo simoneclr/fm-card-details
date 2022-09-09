@@ -20,52 +20,87 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 
 	const [name, setName] = useState<string>("")
 	const [nameError, setNameError] = useState<boolean>(false)
+	const [nameErrorMessage, setNameErrorMessage] = useState<string | undefined>()
 
 	const [number, setNumber] = useState<string>("")
 	const [numberError, setNumberError] = useState<boolean>(false)
+	const [numberErrorMessage, setNumberErrorMessage] = useState<string | undefined>()
 
 	const [expireMonth, setExpireMonth] = useState<string>("")
 	const [expireMonthError, setExpireMonthError] = useState<boolean>(false)
+	const [expireMonthErrorMessage, setExpireMonthErrorMessage] = useState<string | undefined>()
 
 	const [expireYear, setExpireYear] = useState<string>("")
 	const [expireYearError, setExpireYearError] = useState<boolean>(false)
+	const [expireYearErrorMessage, setExpireYearErrorMessage] = useState<string | undefined>()
 
 	const [cvc, setCvc] = useState<string>("")
 	const [cvcError, setCvcError] = useState<boolean>(false)
+	const [cvcErrorMessage, setCvcErrorMessage] = useState<string | undefined>()
 
 	const handleSubmit = (e: SyntheticEvent) => {
 		e.preventDefault()
 
 		let reject = false
+
+		let nameValidation = validateName(name)
 		
-		if (validateName(name).error) {
+		if (nameValidation.error) {
 			reject = true
-			setNameError(true)
-			console.log("Name: " + validateName(number).message)
+			setNameError(nameValidation.error)
+			setNameErrorMessage(nameValidation.message)
+			// console.log("Name: " + validateName(number).message)
+		} else {
+			setNameError(false)
+			setNameErrorMessage(undefined)
 		}
 
-		if (validateNumber(number).error) {
+		let numberValidation = validateNumber(number)
+
+		if (numberValidation.error) {
 			reject = true
-			setNumberError(true)
-			console.log("Number: " + validateNumber(number).message)
+			setNumberError(numberValidation.error)
+			setNumberErrorMessage(numberValidation.message)
+			// console.log("Number: " + validateNumber(number).message)
+		} else {
+			setNumberError(false)
+			setNumberErrorMessage(undefined)
 		}
 
-		if (validateMonth(expireMonth).error) {
+		let monthValidation = validateMonth(expireMonth)
+
+		if (monthValidation.error) {
 			reject = true
-			setExpireMonthError(true)
-			console.log("Month: " + validateMonth(expireMonth).message)
+			setExpireMonthError(monthValidation.error)
+			setExpireMonthErrorMessage(monthValidation.message)
+			// console.log("Month: " + validateMonth(expireMonth).message)
+		} else {
+			setExpireMonthError(false)
+			setExpireMonthErrorMessage(undefined)
 		}
 
-		if (validateYear(expireYear).error) {
+		let yearValidation = validateYear(expireYear)
+
+		if (yearValidation.error) {
 			reject = true
-			setExpireYearError(true)
-			console.log("Year: " + validateYear(expireYear).message)
+			setExpireYearError(yearValidation.error)
+			setExpireYearErrorMessage(yearValidation.message)
+			// console.log("Year: " + validateYear(expireYear).message)
+		} else {
+			setExpireYearError(false)
+			setExpireYearErrorMessage(undefined)
 		}
 
-		if (validateCvc(cvc).error) {
+		let cvcValidation = validateCvc(cvc)
+
+		if (cvcValidation.error) {
 			reject = true
-			setCvcError(true)
-			console.log("Cvc: " + validateCvc(cvc).message)
+			setCvcError(cvcValidation.error)
+			setCvcErrorMessage(cvcValidation.message)
+			// console.log("Cvc: " + validateCvc(cvc).message)
+		} else {
+			setCvcError(false)
+			setCvcErrorMessage(undefined)
 		}
 
 		if (!reject) {
@@ -77,8 +112,24 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 			setExpireMonth("")
 			setExpireYear("")
 			setCvc("")
+
+			// Reset errors
+			setNameError(false)
+			setNameErrorMessage(undefined)
+			
+			setNumberError(false)
+			setNumberErrorMessage(undefined)
+			
+			setExpireMonthError(false)
+			setExpireMonthErrorMessage(undefined)
+			
+			setExpireYearError(false)
+			setExpireYearErrorMessage(undefined)
+			
+			setCvcError(false)
+			setCvcErrorMessage(undefined)
 		}
-	} 
+	}
 
 	return (
 		<form onSubmit={handleSubmit} className="flex flex-wrap justify-between gap-4 w-80">
@@ -96,7 +147,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					placeholder="e.g. Jane Appleseed"
 					value={name}
 					error={nameError}
-					errorMessage="Invalid value"
+					errorMessage={nameErrorMessage}
 				/>
 			</label>
 
@@ -113,7 +164,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					placeholder="e.g. 1234 4567 9123 0000"
 					value={number}
 					error={numberError}
-					errorMessage="Invalid value"
+					errorMessage={numberErrorMessage}
 				/>
 			</label>
 
@@ -130,7 +181,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					placeholder="MM"
 					value={expireMonth}
 					error={expireMonthError}
-					errorMessage="Invalid value"
+					errorMessage={expireMonthErrorMessage}
 				/>
 
 				<InputWithErrorMessage
@@ -141,7 +192,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					placeholder="YY"
 					value={expireYear}
 					error={expireYearError}
-					errorMessage="Invalid value"
+					errorMessage={expireYearErrorMessage}
 				/>
 			</label>
 
@@ -158,7 +209,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					placeholder="e.g. 123"
 					value={cvc}
 					error={cvcError}
-					errorMessage="Invalid value"
+					errorMessage={cvcErrorMessage}
 				/>
 			</label>
 			
