@@ -26,12 +26,20 @@ function ValidatedTextInput({
 		setErrorMessage(undefined)
 	}
 
+	// When the field looses focus, perform input validation
+	const handleBlur = (input: string) => {
+		let validation = validateInput(input)
+
+		setError(validation.error)
+		setErrorMessage(validation.message)
+	}
+
 	return (
 		<div className={(className ? className + " " : "") + 
 			"group flex flex-col gap-2"}>
 			
 			<input type="text" name={name} id={name} value={value} placeholder={placeholder} size={1} 
-				onChange={e => handleChange(e.target.value)} required={true}
+				onChange={e => handleChange(e.target.value)} onBlur={e => handleBlur(e.target.value)} required={true}
 				className={"text-base placeholder:text-darkGrayishViolet p-2 rounded-lg outline outline-1 " +
 					"focus:outline-2 focus:outline-veryDarkViolet " +	
 					(error ? "outline-errorRed" : "outline-darkGrayishViolet")
