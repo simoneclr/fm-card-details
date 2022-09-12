@@ -3,7 +3,7 @@ import { useState, SyntheticEvent } from "react"
 import { validateCvc, validateMonth, validateName, validateNumber, validateYear } from "./validation"
 
 import CtaButton from "../../components/CtaButton"
-import InputWithErrorMessage from "./InputWithErrorMessage"
+import ValidatedTextInput from "./ValidatedTextInput"
 
 interface CardDetailsFormProps {
 	updateValues: (
@@ -20,120 +20,23 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 
 	const [name, setName] = useState<string>("")
 	const [nameError, setNameError] = useState<boolean>(false)
-	const [nameErrorMessage, setNameErrorMessage] = useState<string | undefined>()
 
 	const [number, setNumber] = useState<string>("")
 	const [numberError, setNumberError] = useState<boolean>(false)
-	const [numberErrorMessage, setNumberErrorMessage] = useState<string | undefined>()
 
 	const [expireMonth, setExpireMonth] = useState<string>("")
 	const [expireMonthError, setExpireMonthError] = useState<boolean>(false)
-	const [expireMonthErrorMessage, setExpireMonthErrorMessage] = useState<string | undefined>()
 
 	const [expireYear, setExpireYear] = useState<string>("")
 	const [expireYearError, setExpireYearError] = useState<boolean>(false)
-	const [expireYearErrorMessage, setExpireYearErrorMessage] = useState<string | undefined>()
 
 	const [cvc, setCvc] = useState<string>("")
 	const [cvcError, setCvcError] = useState<boolean>(false)
-	const [cvcErrorMessage, setCvcErrorMessage] = useState<string | undefined>()
-
-	const handleNameChange = (input: string) => {
-		setName(input)
-		setNameError(false)
-		setNameErrorMessage(undefined)
-	}
-
-	const handleNumberChange = (input: string) => {
-		setNumber(input)
-		setNumberError(false)
-		setNumberErrorMessage(undefined)
-	}
-
-	const handleExpireMonthChange = (input: string) => {
-		setExpireMonth(input)
-		setExpireMonthError(false)
-		setExpireMonthErrorMessage(undefined)
-	}
-
-	const handleExpireYearChange = (input: string) => {
-		setExpireYear(input)
-		setExpireYearError(false)
-		setExpireYearErrorMessage(undefined)
-	}
-
-	const handleCvcChange = (input: string) => {
-		setCvc(input)
-		setCvcError(false)
-		setCvcErrorMessage(undefined)
-	}
 
 	const handleSubmit = (e: SyntheticEvent) => {
 		e.preventDefault()
 
-		let reject = false
-
-		let nameValidation = validateName(name)
-		
-		if (nameValidation.error) {
-			reject = true
-			setNameError(nameValidation.error)
-			setNameErrorMessage(nameValidation.message)
-			// console.log("Name: " + validateName(number).message)
-		} else {
-			setNameError(false)
-			setNameErrorMessage(undefined)
-		}
-
-		let numberValidation = validateNumber(number)
-
-		if (numberValidation.error) {
-			reject = true
-			setNumberError(numberValidation.error)
-			setNumberErrorMessage(numberValidation.message)
-			// console.log("Number: " + validateNumber(number).message)
-		} else {
-			setNumberError(false)
-			setNumberErrorMessage(undefined)
-		}
-
-		let monthValidation = validateMonth(expireMonth)
-
-		if (monthValidation.error) {
-			reject = true
-			setExpireMonthError(monthValidation.error)
-			setExpireMonthErrorMessage(monthValidation.message)
-			// console.log("Month: " + validateMonth(expireMonth).message)
-		} else {
-			setExpireMonthError(false)
-			setExpireMonthErrorMessage(undefined)
-		}
-
-		let yearValidation = validateYear(expireYear)
-
-		if (yearValidation.error) {
-			reject = true
-			setExpireYearError(yearValidation.error)
-			setExpireYearErrorMessage(yearValidation.message)
-			// console.log("Year: " + validateYear(expireYear).message)
-		} else {
-			setExpireYearError(false)
-			setExpireYearErrorMessage(undefined)
-		}
-
-		let cvcValidation = validateCvc(cvc)
-
-		if (cvcValidation.error) {
-			reject = true
-			setCvcError(cvcValidation.error)
-			setCvcErrorMessage(cvcValidation.message)
-			// console.log("Cvc: " + validateCvc(cvc).message)
-		} else {
-			setCvcError(false)
-			setCvcErrorMessage(undefined)
-		}
-
-		if (!reject) {
+		if (!(nameError || numberError || expireMonthError || expireYearError || cvcError)) {
 			updateValues(name, number, expireMonth, expireYear, cvc)
 
 			// Clear form
@@ -142,22 +45,6 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 			setExpireMonth("")
 			setExpireYear("")
 			setCvc("")
-
-			// Reset errors
-			setNameError(false)
-			setNameErrorMessage(undefined)
-			
-			setNumberError(false)
-			setNumberErrorMessage(undefined)
-			
-			setExpireMonthError(false)
-			setExpireMonthErrorMessage(undefined)
-			
-			setExpireYearError(false)
-			setExpireYearErrorMessage(undefined)
-			
-			setCvcError(false)
-			setCvcErrorMessage(undefined)
 		}
 	}
 
@@ -169,15 +56,15 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					Cardholder Name
 				</div>
 
-				<InputWithErrorMessage
+				<ValidatedTextInput
 					className="grow"
 					name="name"
-					type="text"
-					handleChange={handleNameChange}
 					placeholder="e.g. Jane Appleseed"
 					value={name}
+					setValue={setName}
 					error={nameError}
-					errorMessage={nameErrorMessage}
+					setError={setNameError}
+					validateInput={validateName}
 				/>
 			</label>
 
@@ -186,15 +73,15 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					Card Number
 				</div>
 
-				<InputWithErrorMessage
+				<ValidatedTextInput
 					className="grow"
 					name="number"
-					type="text"
-					handleChange={handleNumberChange}
 					placeholder="e.g. 1234 4567 9123 0000"
 					value={number}
+					setValue={setNumber}
 					error={numberError}
-					errorMessage={numberErrorMessage}
+					setError={setNumberError}
+					validateInput={validateNumber}
 				/>
 			</label>
 
@@ -203,26 +90,26 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					Exp. Date (MM/YY)
 				</div>
 
-				<InputWithErrorMessage
+				<ValidatedTextInput
 					className="grow"
 					name="expireMonth"
-					type="text"
-					handleChange={handleExpireMonthChange}
 					placeholder="MM"
 					value={expireMonth}
+					setValue={setExpireMonth}
 					error={expireMonthError}
-					errorMessage={expireMonthErrorMessage}
+					setError={setExpireMonthError}
+					validateInput={validateMonth}
 				/>
 
-				<InputWithErrorMessage
+				<ValidatedTextInput
 					className="grow"
 					name="expireYear"
-					type="text"
-					handleChange={handleExpireYearChange}
 					placeholder="YY"
 					value={expireYear}
+					setValue={setExpireYear}
 					error={expireYearError}
-					errorMessage={expireYearErrorMessage}
+					setError={setExpireYearError}
+					validateInput={validateYear}
 				/>
 			</label>
 
@@ -231,15 +118,15 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 					Cvc
 				</div>
 
-				<InputWithErrorMessage
+				<ValidatedTextInput
 					className="w-full"
 					name="name"
-					type="text"
-					handleChange={handleCvcChange}
 					placeholder="e.g. 123"
 					value={cvc}
+					setValue={setCvc}
 					error={cvcError}
-					errorMessage={cvcErrorMessage}
+					setError={setCvcError}
+					validateInput={validateCvc}
 				/>
 			</label>
 			
