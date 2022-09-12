@@ -49,7 +49,7 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className="flex flex-wrap justify-between gap-4 w-80">
+		<form onSubmit={handleSubmit} className="flex flex-wrap justify-between gap-4">
 
 			<label className="w-full">
 				<div className="uppercase text-sm mb-2">

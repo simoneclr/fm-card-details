@@ -4,13 +4,15 @@ interface CardPreviewFrontProps {
 	number: string;
 	name: string;
 	expireDate: string;
+	className?: string;
 }
 
 // Displays a preview of the front of the credit card with the data inserted by the user
-function CardPreviewFront({number, name, expireDate}: CardPreviewFrontProps) {
+function CardPreviewFront({number, name, expireDate, className}: CardPreviewFrontProps) {
 
 	return (
-		<div className="CardPreviewFront text-white w-[275px] p-4 flex flex-col justify-between">
+		<div className={(className ? className + " " : "") + 
+					"CardPreviewFront text-white w-[275px] p-4 flex flex-col justify-between"}>
 
 			<div className="grow w-full">
 				<CardLogo className="h-8"/>

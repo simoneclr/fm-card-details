@@ -31,8 +31,9 @@ function App() {
   }
 
   return (
-    <div className="h-screen font-grotesk text-veryDarkViolet text-lg">
-      <div className="container py-16 flex flex-col gap-8 items-center">
+    <div className="App h-screen font-grotesk text-veryDarkViolet text-lg flex flex-col items-center">      
+
+      <div className="grow w-[375px] flex flex-col items-stretch px-4 pt-8 pb-16">
         <CardPreview 
           name={name}
           number={number}

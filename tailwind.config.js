@@ -18,6 +18,9 @@ module.exports = {
       },
       fontFamily: {
         grotesk: ['Space Grotesk', "sans-serif"]
+      },
+      backgroundSize: {
+        mobileSize: ["100% 235px"]
       }
     },
   },

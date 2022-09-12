@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+
+	.App {
+		/* Mobile bg */
+		@apply bg-[url("./assets/images/bg-main-mobile.png")];
+		@apply bg-no-repeat;
+		@apply bg-top;
+		@apply bg-mobileSize;
+	}
 	
 	.CardPreviewFront {
 		@apply bg-[url("./assets/images/bg-card-front.png")];
