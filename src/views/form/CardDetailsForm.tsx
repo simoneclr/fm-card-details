@@ -85,32 +85,35 @@ function CardDetailsForm({updateValues}: CardDetailsFormProps) {
 				/>
 			</label>
 
-			<label className="flex flex-wrap gap-x-4 gap-y-2 items-center w-1/2">
-				<div className="uppercase text-sm w-full">
+			<label className="w-1/2">
+				<div className="uppercase text-sm w-full mb-2">
 					Exp. Date (MM/YY)
 				</div>
 
-				<ValidatedTextInput
-					className="grow"
-					name="expireMonth"
-					placeholder="MM"
-					value={expireMonth}
-					setValue={setExpireMonth}
-					error={expireMonthError}
-					setError={setExpireMonthError}
-					validateInput={validateMonth}
-				/>
+				<div className="grid grid-cols-2 gap-4">
+					<ValidatedTextInput
+						className="grow"
+						name="expireMonth"
+						placeholder="MM"
+						value={expireMonth}
+						setValue={setExpireMonth}
+						error={expireMonthError}
+						setError={setExpireMonthError}
+						validateInput={validateMonth}
+					/>
 
-				<ValidatedTextInput
-					className="grow"
-					name="expireYear"
-					placeholder="YY"
-					value={expireYear}
-					setValue={setExpireYear}
-					error={expireYearError}
-					setError={setExpireYearError}
-					validateInput={validateYear}
-				/>
+					<ValidatedTextInput
+						className="grow"
+						name="expireYear"
+						placeholder="YY"
+						value={expireYear}
+						setValue={setExpireYear}
+						error={expireYearError}
+						setError={setExpireYearError}
+						validateInput={validateYear}
+					/>
+				</div>
+				
 			</label>
 
 			<label className="grow">
