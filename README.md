@@ -2,6 +2,8 @@
 
 ![Design preview for the Interactive card details form coding challenge](./design/desktop-preview.jpg)
 
+[Live Demo](https://simoneclr.github.io/fm-card-details/)
+
 ## Welcome! 👋
 
 Thanks for checking out this front-end coding challenge.
