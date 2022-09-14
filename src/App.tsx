@@ -47,7 +47,7 @@ function App() {
 
         <div className="max-w-[375px]">
           {
-            true ? 
+            success ? 
             
             <ConfirmationPage handleContinue={() => {setSuccess(false)}}/>
 
