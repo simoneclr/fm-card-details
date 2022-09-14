@@ -31,9 +31,12 @@ function App() {
   }
 
   return (
-    <div className="App h-screen font-grotesk text-veryDarkViolet text-lg flex flex-col items-center">      
+    <div className="App min-h-screen font-grotesk text-veryDarkViolet text-lg flex flex-col items-center">      
 
-      <div className="grow w-[375px] flex flex-col items-stretch px-4 pt-8 pb-16">
+      <div className="grow w-[375px] flex flex-col items-stretch px-4 pt-8 pb-16
+            lg:grid lg:grid-cols-[375px_375px] xl:grid-cols-[500px_500px] 
+            lg:gap-24 lg:w-full justify-center lg:items-center">
+        
         <CardPreview 
           name={name}
           number={number}
@@ -42,16 +45,17 @@ function App() {
           cvc={cvc}
         />
 
-        {
-          success ? 
-          
-          <ConfirmationPage handleContinue={() => {setSuccess(false)}}/>
+        <div className="max-w-[375px]">
+          {
+            true ? 
+            
+            <ConfirmationPage handleContinue={() => {setSuccess(false)}}/>
 
-          :
+            :
 
-          <CardDetailsForm updateValues={updateValues} />
-        }
-        
+            <CardDetailsForm updateValues={updateValues} />
+          }
+        </div>        
       </div>
     </div>
   );

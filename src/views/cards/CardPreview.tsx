@@ -36,16 +36,16 @@ function CardPreview({number, name, expireMonth, expireYear, cvc}: CardPreviewPr
 	let renderedCvc = cvc || "0000"
 
 	return (
-		<div className="relative h-72">
+		<div className="relative max-w-[500px] h-72 xl:h-96">
 			<CardPreviewFront 
 				number={renderedNumber}
 				name={renderedName}
 				expireDate={renderedDate}
-				className="absolute z-10 top-[90px] left-0"
+				className="absolute z-10 top-[90px] left-0 lg:top-[-30px] xl:top-[-50px]"
 			/>
 
 			<CardPreviewBack cvc={renderedCvc} 
-				className="absolute top-0 right-0"
+				className="absolute top-0 right-0 lg:top-auto lg:bottom-[-30px] xl:bottom:[-40px]"
 			/>
 		</div>
 	)

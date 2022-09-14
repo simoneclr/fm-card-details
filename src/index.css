@@ -10,6 +10,11 @@
 		@apply bg-no-repeat;
 		@apply bg-top;
 		@apply bg-mobileSize;
+
+		/* Desktop bg */
+		@apply lg:bg-[url("./assets/images/bg-main-desktop.png")];
+		@apply lg:bg-left;
+		@apply lg:bg-desktopSize;
 	}
 	
 	.CardPreviewFront {

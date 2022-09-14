@@ -20,7 +20,8 @@ module.exports = {
         grotesk: ['Space Grotesk', "sans-serif"]
       },
       backgroundSize: {
-        mobileSize: ["100% 235px"]
+        mobileSize: ["100% 235px"],
+        desktopSize: ["auto 100%"]
       }
     },
   },
