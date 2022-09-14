@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/fm-card-details/static/css/main.29f8c79e.css",
-    "main.js": "/fm-card-details/static/js/main.d79ce1fb.js",
+    "main.js": "/fm-card-details/static/js/main.d5c8a46e.js",
     "static/media/bg-main-desktop.png": "/fm-card-details/static/media/bg-main-desktop.806e7aa7b4dbc1d78bc3.png",
     "static/media/bg-card-back.png": "/fm-card-details/static/media/bg-card-back.23f68fa3aa3d5b33dfc8.png",
     "static/media/bg-card-front.png": "/fm-card-details/static/media/bg-card-front.8153e2ca184402a8385f.png",
@@ -10,10 +10,10 @@
     "static/media/icon-complete.svg": "/fm-card-details/static/media/icon-complete.3a2c487ab6d9a58dcfd39c81657a9bb8.svg",
     "static/media/card-logo.svg": "/fm-card-details/static/media/card-logo.5b956704345a3c5df164610b56886ea8.svg",
     "main.29f8c79e.css.map": "/fm-card-details/static/css/main.29f8c79e.css.map",
-    "main.d79ce1fb.js.map": "/fm-card-details/static/js/main.d79ce1fb.js.map"
+    "main.d5c8a46e.js.map": "/fm-card-details/static/js/main.d5c8a46e.js.map"
   },
   "entrypoints": [
     "static/css/main.29f8c79e.css",
-    "static/js/main.d79ce1fb.js"
+    "static/js/main.d5c8a46e.js"
   ]
 }
